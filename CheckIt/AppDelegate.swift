@@ -17,8 +17,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
 
         let listStore = ListStore()
-        let listsController = window!.rootViewController as! ListsViewController
-        listsController.listStore = listStore
+        let rootViewController = window!.rootViewController as! UINavigationController
+        let listsVC = rootViewController.topViewController as! ListsViewController
+        listsVC.listStore = listStore
         return true
     }
 
