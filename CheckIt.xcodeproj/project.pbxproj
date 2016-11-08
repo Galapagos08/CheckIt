@@ -17,6 +17,7 @@
 		F753D2DC1DD120E500699604 /* List.swift in Sources */ = {isa = PBXBuildFile; fileRef = F753D2DB1DD120E500699604 /* List.swift */; };
 		F7C8B34D1DD2413200F9ADFA /* ListStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7C8B34C1DD2413200F9ADFA /* ListStore.swift */; };
 		F7C8B34F1DD2491C00F9ADFA /* ListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7C8B34E1DD2491C00F9ADFA /* ListCell.swift */; };
+		F7C8B3511DD255CC00F9ADFA /* ListDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7C8B3501DD255CC00F9ADFA /* ListDetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,7 @@
 		F753D2DB1DD120E500699604 /* List.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = List.swift; sourceTree = "<group>"; };
 		F7C8B34C1DD2413200F9ADFA /* ListStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListStore.swift; sourceTree = "<group>"; };
 		F7C8B34E1DD2491C00F9ADFA /* ListCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListCell.swift; sourceTree = "<group>"; };
+		F7C8B3501DD255CC00F9ADFA /* ListDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListDetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +109,7 @@
 				F753D2AF1DD120C100699604 /* ListsViewController.swift */,
 				F7C8B34E1DD2491C00F9ADFA /* ListCell.swift */,
 				F753D2B11DD120C100699604 /* Main.storyboard */,
+				F7C8B3501DD255CC00F9ADFA /* ListDetailViewController.swift */,
 				F753D2B41DD120C100699604 /* Assets.xcassets */,
 				F753D2B61DD120C100699604 /* LaunchScreen.storyboard */,
 				F753D2B91DD120C100699604 /* Info.plist */,
@@ -274,6 +277,7 @@
 				F753D2B01DD120C100699604 /* ListsViewController.swift in Sources */,
 				F753D2DC1DD120E500699604 /* List.swift in Sources */,
 				F753D2AE1DD120C100699604 /* AppDelegate.swift in Sources */,
+				F7C8B3511DD255CC00F9ADFA /* ListDetailViewController.swift in Sources */,
 				F7C8B34F1DD2491C00F9ADFA /* ListCell.swift in Sources */,
 				F7C8B34D1DD2413200F9ADFA /* ListStore.swift in Sources */,
 			);

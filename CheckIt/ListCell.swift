@@ -10,6 +10,6 @@ import UIKit
 
 class ListCell: UITableViewCell {
 
-    @IBOutlet var listName: UILabel!
+    @IBOutlet var listNameLabel: UILabel!
     
 }

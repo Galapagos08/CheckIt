@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Lists View Controller-->
+        <!--Title-->
         <scene sceneID="mUt-FS-pai">
             <objects>
                 <tableViewController id="GP9-rS-Tpz" customClass="ListsViewController" customModule="CheckIt" customModuleProvider="target" sceneMemberID="viewController">
@@ -26,8 +26,8 @@
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="listName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gea-FY-GtD">
-                                            <rect key="frame" x="8" y="11" width="42" height="21"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="list Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gea-FY-GtD" customClass="listNameLabel">
+                                            <rect key="frame" x="8" y="8" width="71.5" height="27.5"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -40,7 +40,8 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="listName" destination="Gea-FY-GtD" id="AjM-zT-H7O"/>
+                                    <outlet property="listNameLabel" destination="Gea-FY-GtD" id="rsP-PP-Fr0"/>
+                                    <segue destination="LFl-qw-Wjr" kind="show" identifier="ShowListDetail" id="Fvc-TU-Oyz"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -49,11 +50,59 @@
                             <outlet property="delegate" destination="GP9-rS-Tpz" id="D1G-Gt-3qe"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="Zap-VL-O55"/>
+                    <navigationItem key="navigationItem" title="Title" id="Jlg-Li-88P">
+                        <barButtonItem key="leftBarButtonItem" systemItem="edit" id="SLy-SO-Jsf"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="lLS-To-GQt"/>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JH7-Nv-7nT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1384.8" y="12.143928035982009"/>
+            <point key="canvasLocation" x="1279" y="12"/>
+        </scene>
+        <!--Title-->
+        <scene sceneID="Mze-US-x31">
+            <objects>
+                <tableViewController id="LFl-qw-Wjr" customClass="ListDetailViewController" customModule="CheckIt" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="Wqm-dA-vT9">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="xId-6x-3BJ">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="xId-6x-3BJ" id="UrB-L6-IMD">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="list Item" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Z1-aa-y0M">
+                                            <rect key="frame" x="8" y="8" width="60" height="27.5"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="bottomMargin" secondItem="2Z1-aa-y0M" secondAttribute="bottom" id="6i5-HZ-ka0"/>
+                                        <constraint firstItem="2Z1-aa-y0M" firstAttribute="top" secondItem="UrB-L6-IMD" secondAttribute="topMargin" id="bwQ-RR-m4O"/>
+                                        <constraint firstAttribute="leadingMargin" secondItem="2Z1-aa-y0M" secondAttribute="leading" id="wfY-z4-0va"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="LFl-qw-Wjr" id="Igt-Eg-lxf"/>
+                            <outlet property="delegate" destination="LFl-qw-Wjr" id="9eh-PW-LTu"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Title" id="gxT-ir-8uK">
+                        <barButtonItem key="leftBarButtonItem" systemItem="edit" id="f3q-7d-Ed1"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="o28-ya-OdC"/>
+                    </navigationItem>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hNU-Yf-iyx" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2110" y="12"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="XSb-8n-0Jy">
