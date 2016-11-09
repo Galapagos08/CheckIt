@@ -10,11 +10,10 @@ import Foundation
 
 class List {
     var listName: String
-    var listItem: String
+    var listItems: [String]?
     
-    init(listName: String, listItem: String) {
+    init(listName: String) {
         self.listName = listName
-        self.listItem = listItem
     }
     
 }
