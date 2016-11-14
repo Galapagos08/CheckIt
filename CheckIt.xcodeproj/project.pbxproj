@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F7026AF71DDA14530055DA73 /* ItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7026AF61DDA14530055DA73 /* ItemCell.swift */; };
+		F7026AF91DDA22BC0055DA73 /* CreateListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7026AF81DDA22BC0055DA73 /* CreateListViewController.swift */; };
 		F707F1311DD3C0500051A7CF /* ListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F707F1301DD3C0500051A7CF /* ListItem.swift */; };
 		F753D2AE1DD120C100699604 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F753D2AD1DD120C100699604 /* AppDelegate.swift */; };
 		F753D2B01DD120C100699604 /* ListsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F753D2AF1DD120C100699604 /* ListsViewController.swift */; };
@@ -39,6 +41,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		F7026AF61DDA14530055DA73 /* ItemCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemCell.swift; sourceTree = "<group>"; };
+		F7026AF81DDA22BC0055DA73 /* CreateListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateListViewController.swift; sourceTree = "<group>"; };
 		F707F1301DD3C0500051A7CF /* ListItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListItem.swift; sourceTree = "<group>"; };
 		F753D2AA1DD120C100699604 /* CheckIt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CheckIt.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F753D2AD1DD120C100699604 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -108,7 +112,9 @@
 			isa = PBXGroup;
 			children = (
 				F753D2AD1DD120C100699604 /* AppDelegate.swift */,
+				F7026AF81DDA22BC0055DA73 /* CreateListViewController.swift */,
 				F753D2AF1DD120C100699604 /* ListsViewController.swift */,
+				F7026AF61DDA14530055DA73 /* ItemCell.swift */,
 				F7C8B34E1DD2491C00F9ADFA /* ListCell.swift */,
 				F7C8B3501DD255CC00F9ADFA /* ListDetailViewController.swift */,
 				F753D2DB1DD120E500699604 /* List.swift */,
@@ -277,8 +283,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F7026AF71DDA14530055DA73 /* ItemCell.swift in Sources */,
 				F753D2B01DD120C100699604 /* ListsViewController.swift in Sources */,
 				F707F1311DD3C0500051A7CF /* ListItem.swift in Sources */,
+				F7026AF91DDA22BC0055DA73 /* CreateListViewController.swift in Sources */,
 				F753D2DC1DD120E500699604 /* List.swift in Sources */,
 				F753D2AE1DD120C100699604 /* AppDelegate.swift in Sources */,
 				F7C8B3511DD255CC00F9ADFA /* ListDetailViewController.swift in Sources */,

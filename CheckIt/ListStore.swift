@@ -21,7 +21,7 @@ class ListStore {
     }
     
     func createList(listName: String, listItem: String)-> List {
-        let newList = List(listName: listName, listItem: listItem)
+        let newList = List(listName: listName)
         return newList
     }
     

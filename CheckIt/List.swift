@@ -8,12 +8,23 @@
 
 import Foundation
 
-class List {
+class List: NSObject, NSCoding {
     var listName: String
-    var listItems: [String]?
+    var listItems = [ListItem]()
     
     init(listName: String) {
         self.listName = listName
+        super.init()
     }
     
+    func encode(with aCoder: NSCoder) {
+        aCoder.encode(listName, forKey: "listName")
+        aCoder.encode(listItems, forKey: "listItems")
+    }
+    
+    required init?(coder: NSCoder) {
+        listName = coder.decodeObject(forKey: "listName") as! String
+        listItems = coder.decodeObject(forKey: "listItems") as! [ListItem]
+        super.init()
+    }
 }

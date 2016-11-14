@@ -34,6 +34,18 @@ class ListsViewController: UITableViewController {
         cell.listNameLabel.text = list.listName
         return cell
     }
-
+    
+    @IBAction func toggleEditingMode(_ sender: AnyObject) {
+        if isEditing {
+            sender.setTitle("Edit", for: UIControlState())
+            setEditing(false, animated: true)
+        }
+        else {
+            sender.setTitle("Done", for: UIControlState())
+            setEditing(true, animated: true)
+        }
+    }
+    
+   
 }
 

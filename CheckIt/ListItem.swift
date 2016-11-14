@@ -8,21 +8,33 @@
 
 import Foundation
 
-class ListItem: NSCoding {
+class ListItem: NSObject, NSCoding {
     var itemID: Int
     var itemInfo: String
+    var checked = false
     
-    init(itemID: Int, itemInfo: String) {
+    init(itemID: Int, itemInfo: String, checked: Bool) {
         self.itemID = itemID
         self.itemInfo = itemInfo
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        <#code#>
+        self.checked = false
+        super.init()
     }
     
     func encode(with aCoder: NSCoder) {
-        <#code#>
+        aCoder.encode(itemID, forKey: "ItemID")
+        aCoder.encode(itemInfo, forKey: "ItemInfo")
+        aCoder.encode(checked, forKey: "Checked")
+    }
+    
+    required init?(coder: NSCoder) {
+        itemID = coder.decodeInteger(forKey: "ItemID")
+        itemInfo = coder.decodeObject(forKey: "iItemInfo") as! String
+        checked = coder.decodeBool(forKey: "Checked")
+        super.init()
+    }
+    
+    func toggleChecked(){
+        checked = !checked
     }
     
 }
