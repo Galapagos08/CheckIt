@@ -12,12 +12,8 @@ class CreateListViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        title = "Create List"
     }
 
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
-    }
-
-
+    
 }

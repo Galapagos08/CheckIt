@@ -20,15 +20,9 @@ class ListStore {
         allLists.insert(movedList, at: toIndex)
     }
     
-    func createList(listName: String, listItem: String)-> List {
+    func createList(listName: String, listItems: [String])-> List {
         let newList = List(listName: listName)
         return newList
     }
-    
-//    func removeList(_ list: List) {
-//        if let index = allLists.index(of: list) {
-//            allLists.remove(at: index)
-//        }
-//    }
     
 }
