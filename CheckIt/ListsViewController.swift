@@ -22,6 +22,7 @@ class ListsViewController: UITableViewController {
         tableView.scrollIndicatorInsets = insets
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 65
+        self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
     }
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -36,10 +37,10 @@ class ListsViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath)-> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ListCell", for: indexPath) as! ListCell
+        let cell: UITableViewCell! = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) 
         let lists = listStore.allLists
         let list = lists[indexPath.row]
-        cell.listNameLabel.text = list.listName
+        cell.textLabel!.text = list.listName
         return cell
     }
     
@@ -52,17 +53,6 @@ class ListsViewController: UITableViewController {
             }
         }
     }
-    
-//    @IBAction func toggleEditingMode(_ sender: AnyObject) {
-//        if isEditing {
-//            sender.setTitle("Edit", for: UIControlState())
-//            setEditing(false, animated: true)
-//        }
-//        else {
-//            sender.setTitle("Done", for: UIControlState())
-//            setEditing(true, animated: true)
-//        }
-//    }
     
 }
 
