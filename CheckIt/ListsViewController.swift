@@ -22,7 +22,7 @@ class ListsViewController: UITableViewController {
         tableView.scrollIndicatorInsets = insets
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 65
-        self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
+        self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "List Cell")
     }
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -37,7 +37,7 @@ class ListsViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath)-> UITableViewCell {
-        let cell: UITableViewCell! = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) 
+        let cell: UITableViewCell! = tableView.dequeueReusableCell(withIdentifier: "List Cell", for: indexPath) 
         let lists = listStore.allLists
         let list = lists[indexPath.row]
         cell.textLabel!.text = list.listName
@@ -52,6 +52,14 @@ class ListsViewController: UITableViewController {
                 listDetailVC.list = list
             }
         }
+    }
+    
+    @IBAction func addBarButton(_ sender: AnyObject){
+        let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+        let navController = storyboard.instantiateViewController(withIdentifier: "Create List Nav") as! UINavigationController
+        let createListVC = navController.topViewController as! CreateListViewController
+        createListVC.listStore = listStore
+        self.present(navController, animated: true, completion: nil)
     }
     
 }

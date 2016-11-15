@@ -13,13 +13,13 @@
         <!--My Lists-->
         <scene sceneID="mUt-FS-pai">
             <objects>
-                <tableViewController id="GP9-rS-Tpz" customClass="ListsViewController" customModule="CheckIt" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="Lists" id="GP9-rS-Tpz" customClass="ListsViewController" customModule="CheckIt" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="Itz-5w-onm">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="ListCell" id="N35-7i-nMw" customClass="ListCell" customModule="CheckIt" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="List Cell" id="N35-7i-nMw" customClass="ListCell" customModule="CheckIt" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="N35-7i-nMw" id="e0f-M9-liG">
@@ -53,7 +53,7 @@
                     <navigationItem key="navigationItem" title="My Lists" id="Jlg-Li-88P">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="lLS-To-GQt">
                             <connections>
-                                <segue destination="SDa-NN-oC5" kind="show" identifier="Create List" id="bMr-uH-UeV"/>
+                                <action selector="addBarButton:" destination="GP9-rS-Tpz" id="RER-2S-QNS"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -75,7 +75,7 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="xId-6x-3BJ" id="UrB-L6-IMD">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="list Item" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Z1-aa-y0M">
@@ -110,7 +110,7 @@
         <!--Create List-->
         <scene sceneID="CYI-o0-Jzl">
             <objects>
-                <tableViewController id="SDa-NN-oC5" customClass="CreateListViewController" customModule="CheckIt" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="Create List" useStoryboardIdentifierAsRestorationIdentifier="YES" id="SDa-NN-oC5" customClass="CreateListViewController" customModule="CheckIt" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="pmG-Y3-kS1">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -165,19 +165,24 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Create List" id="ur6-Ua-V28">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="xbJ-Mn-ZsC">
+                            <connections>
+                                <action selector="cancelButton:" destination="SDa-NN-oC5" id="Ces-XR-uvB"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="done" id="Xcl-7s-ikM"/>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="42p-YH-g6Z" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1278" y="763"/>
+            <point key="canvasLocation" x="1278" y="681"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="XSb-8n-0Jy">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Fsh-g7-32y" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="Main Nav" automaticallyAdjustsScrollViewInsets="NO" id="Fsh-g7-32y" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="P4t-SO-oNa">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="P4t-SO-oNa">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -189,6 +194,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eUa-T0-CHS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="445.60000000000002" y="12.143928035982009"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="tlT-jW-N6c">
+            <objects>
+                <navigationController storyboardIdentifier="Create List Nav" automaticallyAdjustsScrollViewInsets="NO" id="Ik1-LX-ch6" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="7HQ-Lu-Tyh">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="SDa-NN-oC5" kind="relationship" relationship="rootViewController" id="gMG-wi-JUv"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="W17-LK-ZBj" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="446" y="682"/>
         </scene>
     </scenes>
 </document>
