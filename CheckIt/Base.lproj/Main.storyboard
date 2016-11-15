@@ -152,7 +152,11 @@
                                 <action selector="cancelButton:" destination="SDa-NN-oC5" id="Ces-XR-uvB"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="Xcl-7s-ikM"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="Xcl-7s-ikM">
+                            <connections>
+                                <action selector="doneButton:" destination="SDa-NN-oC5" id="Ybc-Nm-xhX"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="42p-YH-g6Z" userLabel="First Responder" sceneMemberID="firstResponder"/>

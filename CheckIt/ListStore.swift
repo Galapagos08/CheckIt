@@ -20,9 +20,10 @@ class ListStore {
         allLists.insert(movedList, at: toIndex)
     }
     
-    func createList(listName: String, listItems: [String])-> List {
+    func createList(listName: String)-> Void {
         let newList = List(listName: listName)
-        return newList
+        allLists.append(newList)
+        return
     }
     
 }

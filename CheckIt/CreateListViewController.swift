@@ -71,6 +71,10 @@ class CreateListViewController: UITableViewController, UITextFieldDelegate {
         }
     }
     
-    
+    @IBAction func doneButton(_ sender: AnyObject) {
+        let listName = self.listName
+        listStore.createList(listName: listName)
+        self.dismiss(animated: true, completion: nil)
+    }
 
 }
