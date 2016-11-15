@@ -41,7 +41,6 @@ class ListDetailViewController: UITableViewController {
         return true
     }
  
-
     /*
     // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
