@@ -19,7 +19,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NVh-sh-K1R">
-                        <rect key="frame" x="0.0" y="0.0" width="355" height="43.5"/>
+                        <rect key="frame" x="20" y="0.0" width="335" height="43.5"/>
                         <nil key="textColor"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <textInputTraits key="textInputTraits"/>
@@ -28,7 +28,7 @@
                 <constraints>
                     <constraint firstAttribute="trailing" secondItem="NVh-sh-K1R" secondAttribute="trailing" constant="20" symbolic="YES" id="2Af-k4-Pdy"/>
                     <constraint firstItem="NVh-sh-K1R" firstAttribute="top" secondItem="5yX-Vc-csA" secondAttribute="top" id="T6r-R9-mK0"/>
-                    <constraint firstItem="NVh-sh-K1R" firstAttribute="leading" secondItem="5yX-Vc-csA" secondAttribute="leading" id="bjV-Nz-fMV"/>
+                    <constraint firstItem="NVh-sh-K1R" firstAttribute="leading" secondItem="5yX-Vc-csA" secondAttribute="leading" constant="20" symbolic="YES" id="bjV-Nz-fMV"/>
                     <constraint firstAttribute="bottom" secondItem="NVh-sh-K1R" secondAttribute="bottom" id="lWx-MQ-WRl"/>
                 </constraints>
             </tableViewCellContentView>

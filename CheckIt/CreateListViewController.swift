@@ -19,36 +19,85 @@ class CreateListViewController: UITableViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Create List"
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         self.tableView.register(UINib(nibName: "MyCell", bundle: nil), forCellReuseIdentifier: "Cell")
         self.navigationItem.rightBarButtonItem?.isEnabled = false
         self.setEditing(true, animated: true)
     }
 
-    override func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCellEditingStyle {
-        switch indexPath.section {
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        return 2
+    }
+    
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        print("isEditing: \(isEditing)")
+        switch section {
         case 0:
-            return .none
+            return 1
+        case 1 where isEditing:
+            return listItems.count+1
         case 1:
-            return .insert
+            return listItems.count
         default:
-            break
+            fatalError("Unexpected section")
+        }
+    }
+    
+    override func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCellEditingStyle {
+        if indexPath.section == 1 {
+            let rowCount = self.tableView(tableView, numberOfRowsInSection: indexPath.section)
+            if rowCount-1 == indexPath.row {
+                return .insert
+            }
+            return .delete
         }
         return .none
     }
     
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        tableView.beginUpdates()
+        switch editingStyle {
+        case .insert:
+            listItems.append("item #\(listItems.count)")
+            tableView.insertRows(at: [indexPath], with: .automatic)
+        case .delete:
+            listItems.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .automatic)
+            
+        default:
+            break;
+        }
+        tableView.endUpdates()
+    }
+    
+    override func tableView(_ tableView: UITableView, shouldIndentWhileEditingRowAt indexPath: IndexPath) -> Bool {
+        if indexPath.section == 1 {
+            return true
+        }
+        return false
+    }
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! MyCell
-        _ = cell.textField
         switch indexPath.section {
         case 0:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! MyCell
             cell.textField.placeholder = "List name"
-        case 1:
+            cell.textField.delegate = self
+            return cell
+        case 1 where isEditing && indexPath.row == listItems.count:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! MyCell
             cell.textField.placeholder = "List item"
+            return cell
+        case 1:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! MyCell
+            cell.textField.text = listItems[indexPath.row]
+            return cell
         default:
-            break
+            fatalError("Unexpected section")
         }
-        cell.textField.delegate = self
-        return cell
     }
     
     @IBAction func cancelButton(_ sender: AnyObject) {
@@ -77,4 +126,8 @@ class CreateListViewController: UITableViewController, UITextFieldDelegate {
         self.dismiss(animated: true, completion: nil)
     }
 
+    override func setEditing(_ editing: Bool, animated: Bool) {
+        super.setEditing(editing, animated: animated)
+    }
+    
 }

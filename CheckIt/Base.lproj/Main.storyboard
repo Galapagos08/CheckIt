@@ -19,29 +19,24 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="List Cell" id="N35-7i-nMw" customClass="ListCell" customModule="CheckIt" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="detailDisclosureButton" indentationWidth="10" reuseIdentifier="List Cell" editingAccessoryType="detailDisclosureButton" textLabel="Tuh-II-OtA" style="IBUITableViewCellStyleDefault" id="N35-7i-nMw" customClass="ListCell" customModule="CheckIt" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="N35-7i-nMw" id="e0f-M9-liG">
-                                    <rect key="frame" x="0.0" y="0.0" width="342" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="308" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="list Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gea-FY-GtD" customClass="listNameLabel">
-                                            <rect key="frame" x="8" y="8" width="71.5" height="27.5"/>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Tuh-II-OtA">
+                                            <rect key="frame" x="15" y="0.0" width="293" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
-                                    <constraints>
-                                        <constraint firstAttribute="leadingMargin" secondItem="Gea-FY-GtD" secondAttribute="leading" id="AHk-t4-4Wk"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="Gea-FY-GtD" secondAttribute="bottom" id="BNP-MI-Gmo"/>
-                                        <constraint firstItem="Gea-FY-GtD" firstAttribute="top" secondItem="e0f-M9-liG" secondAttribute="topMargin" id="wGQ-5b-Zaj"/>
-                                    </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="listNameLabel" destination="Gea-FY-GtD" id="rsP-PP-Fr0"/>
-                                    <segue destination="LFl-qw-Wjr" kind="show" identifier="List Detail" id="Fvc-TU-Oyz"/>
+                                    <segue destination="LFl-qw-Wjr" kind="showDetail" trigger="accessoryAction" id="dR4-fH-UG7"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -60,7 +55,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JH7-Nv-7nT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1279" y="12"/>
+            <point key="canvasLocation" x="1278" y="12"/>
         </scene>
         <!--Title-->
         <scene sceneID="Mze-US-x31">
@@ -111,39 +106,23 @@
         <scene sceneID="CYI-o0-Jzl">
             <objects>
                 <tableViewController storyboardIdentifier="Create List" useStoryboardIdentifierAsRestorationIdentifier="YES" id="SDa-NN-oC5" customClass="CreateListViewController" customModule="CheckIt" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="pmG-Y3-kS1">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="pmG-Y3-kS1">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-                        <sections>
-                            <tableViewSection footerTitle="Give your list a short, descriptive name" id="iIb-nH-KnA">
-                                <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="Cell" id="sZZ-QC-elY" customClass="MyCell" customModule="CheckIt" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="35" width="375" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" tag="1" contentMode="center" tableViewCell="sZZ-QC-elY" id="l3M-Sy-YQz">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                </cells>
-                            </tableViewSection>
-                            <tableViewSection headerTitle=" " id="3gm-dp-m3N">
-                                <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="Cell" id="2Fm-NY-ty6" customClass="MyCell" customModule="CheckIt" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="148" width="375" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" tag="1" contentMode="center" tableViewCell="2Fm-NY-ty6" id="XM9-bh-qqL">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                </cells>
-                            </tableViewSection>
-                        </sections>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="Cell" id="sZZ-QC-elY" customClass="MyCell" customModule="CheckIt" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="56" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" tag="1" contentMode="center" tableViewCell="sZZ-QC-elY" id="l3M-Sy-YQz">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <sections/>
                         <connections>
                             <outlet property="dataSource" destination="SDa-NN-oC5" id="BXH-j3-iCx"/>
-                            <outlet property="delegate" destination="SDa-NN-oC5" id="K7d-jl-Tuv"/>
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Create List" id="ur6-Ua-V28">
