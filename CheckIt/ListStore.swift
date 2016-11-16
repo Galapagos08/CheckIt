@@ -21,9 +21,28 @@ class ListStore {
     }
     
     func createList(listName: String)-> Void {
-        let newList = List(listName: listName)
+        let newList = List(listName: listName, listItems: [])
         allLists.append(newList)
         return
     }
     
+    func createListItem(itemInfo: String)-> ListItem {
+        let listItem = ListItem(itemInfo: itemInfo, checked: false)
+        return listItem
+    }
+    
+    func convertStringArray(someArray: [String])-> [ListItem] {
+        var listItems = [ListItem]()
+        if someArray.count != 0 {
+            for item in someArray {
+                let listItem = createListItem(itemInfo: item)
+                listItems.append(listItem)
+            }
+            print(listItems[0].checked)
+            return listItems
+        }
+        else {
+            return listItems
+        }
+    }
 }

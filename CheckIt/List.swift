@@ -10,11 +10,20 @@ import Foundation
 
 class List: NSObject, NSCoding {
     var listName: String
-    var listItems = [ListItem]()
+    var listItems: [ListItem]
     
-    init(listName: String) {
+    init(listName: String, listItems: [ListItem]) {
         self.listName = listName
+        self.listItems = listItems
         super.init()
+    }
+    
+    convenience init?(dictionary: [String: Any]) {
+        guard let listName = dictionary[List.listNameKey] as? String,
+            let listItems = dictionary[List.listItemsKey] as? [ListItem] else {
+                return nil
+        }
+        self.init(listName: listName, listItems: listItems)
     }
     
     func encode(with aCoder: NSCoder) {
@@ -27,4 +36,9 @@ class List: NSObject, NSCoding {
         listItems = coder.decodeObject(forKey: "listItems") as! [ListItem]
         super.init()
     }
+}
+
+extension List {
+    @nonobjc static let listNameKey: String = "listName"
+    @nonobjc static let listItemsKey: String = "listItems"
 }

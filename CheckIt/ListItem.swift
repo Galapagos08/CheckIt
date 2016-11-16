@@ -18,19 +18,31 @@ class ListItem: NSObject, NSCoding {
         super.init()
     }
     
+    convenience init?(dictionary: [String: Any]) {
+        guard let itemInfo = dictionary[ListItem.itemInfoKey] as? String else
+        {
+            return nil
+        }
+        self.init(itemInfo: itemInfo, checked: false)
+    }
+    
     func encode(with aCoder: NSCoder) {
         aCoder.encode(itemInfo, forKey: "ItemInfo")
         aCoder.encode(checked, forKey: "Checked")
     }
     
     required init?(coder: NSCoder) {
-        itemInfo = coder.decodeObject(forKey: "iItemInfo") as! String
+        itemInfo = coder.decodeObject(forKey: "ItemInfo") as! String
         checked = coder.decodeBool(forKey: "Checked")
         super.init()
     }
     
-    func toggleChecked(){
-        checked = !checked
-    }
+//    func toggleChecked(){
+//        checked = !checked
+//    }
     
+}
+
+extension ListItem {
+    @nonobjc static let itemInfoKey: String = "itemInfo"
 }

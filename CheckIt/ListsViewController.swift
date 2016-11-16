@@ -13,6 +13,15 @@ class ListsViewController: UITableViewController {
     var listStore: ListStore = ListStore()
     var lists: [List] = []
     
+    func cellForTableView(_ tableView: UITableView)-> UITableViewCell {
+        let cellIdentifier = "List Cell"
+        if let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier) {
+            return cell
+        } else {
+            return UITableViewCell(style: .subtitle, reuseIdentifier: cellIdentifier)
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "My Lists"
@@ -22,8 +31,6 @@ class ListsViewController: UITableViewController {
         tableView.scrollIndicatorInsets = insets
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 65
-        self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "List Cell")
-    
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -43,10 +50,12 @@ class ListsViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath)-> UITableViewCell {
-        let cell: UITableViewCell! = tableView.dequeueReusableCell(withIdentifier: "List Cell", for: indexPath) 
+        let cell = cellForTableView(tableView)
+        cell.accessoryType = .disclosureIndicator
         let lists = listStore.allLists
         let list = lists[indexPath.row]
         cell.textLabel!.text = list.listName
+        cell.detailTextLabel?.text = "\(list.listItems.count) items"
         return cell
     }
     
