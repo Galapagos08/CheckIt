@@ -60,9 +60,9 @@ class ListsViewController: UITableViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "List Detail" {
-            if let row = (tableView.indexPathForSelectedRow as IndexPath?)?.row {
-                let list = lists[row]
+        if segue.identifier == "ListDetail" {
+            if let row = (tableView.indexPathForSelectedRow)?.row {
+                let list = listStore.allLists[row]
                 let listDetailVC = segue.destination as! ListDetailViewController
                 listDetailVC.list = list
             }

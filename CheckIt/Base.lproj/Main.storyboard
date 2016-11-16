@@ -42,7 +42,7 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="aQy-NI-Bbe" kind="show" identifier="List Detail" trigger="accessoryAction" id="jIQ-jj-k0v"/>
+                                    <segue destination="c76-E3-Sji" kind="show" identifier="ListDetail" id="lUy-hj-avJ"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -64,32 +64,32 @@
             <point key="canvasLocation" x="1278" y="12"/>
         </scene>
         <!--List Detail View Controller-->
-        <scene sceneID="ft3-NH-McL">
+        <scene sceneID="s0l-qF-8Uw">
             <objects>
-                <tableViewController id="aQy-NI-Bbe" customClass="ListDetailViewController" customModule="CheckIt" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="8Y6-kR-Wno">
+                <tableViewController id="c76-E3-Sji" customClass="ListDetailViewController" customModule="CheckIt" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="v6p-th-wcB">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" id="jK8-kt-4kC">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" id="0Ds-i9-Jrp">
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="jK8-kt-4kC" id="acc-cp-l6h">
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="0Ds-i9-Jrp" id="MZa-8J-8CG">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
                         </prototypes>
                         <connections>
-                            <outlet property="dataSource" destination="aQy-NI-Bbe" id="cfU-kc-JHb"/>
-                            <outlet property="delegate" destination="aQy-NI-Bbe" id="07d-mk-1ub"/>
+                            <outlet property="dataSource" destination="c76-E3-Sji" id="rSG-3V-2HZ"/>
+                            <outlet property="delegate" destination="c76-E3-Sji" id="HAG-qj-R7c"/>
                         </connections>
                     </tableView>
                 </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="rcU-Pd-4Yw" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="X4Z-V6-12F" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1839" y="12"/>
+            <point key="canvasLocation" x="2407" y="0.0"/>
         </scene>
         <!--Create List-->
         <scene sceneID="CYI-o0-Jzl">

@@ -14,7 +14,7 @@ class ListDetailViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = list.listName
+        title = "\(list.listName)"
         self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
     }
 
