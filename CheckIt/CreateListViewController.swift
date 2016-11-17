@@ -11,8 +11,6 @@ import UIKit
 class CreateListViewController: UITableViewController, UITextFieldDelegate {
 
     var listStore: ListStore = ListStore()
-    var list: List!
-    
     var newListName: String = ""
     var newListItems: [String] = []
     
@@ -33,14 +31,13 @@ class CreateListViewController: UITableViewController, UITextFieldDelegate {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print("isEditing: \(isEditing)")
         switch section {
         case 0:
             return 1
         case 1 where isEditing:
             return newListItems.count+1
-        case 1:
-            return newListItems.count
+//        case 1:
+//            return newListItems.count
         default:
             fatalError("Unexpected section")
         }
@@ -61,12 +58,11 @@ class CreateListViewController: UITableViewController, UITextFieldDelegate {
         tableView.beginUpdates()
         switch editingStyle {
         case .insert:
-            newListItems.append("item #\(newListItems.count)")
+            newListItems.append("\(newListItems.count+1)")
             tableView.insertRows(at: [indexPath], with: .automatic)
         case .delete:
             newListItems.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .automatic)
-            
         default:
             break;
         }
@@ -89,11 +85,13 @@ class CreateListViewController: UITableViewController, UITextFieldDelegate {
             return cell
         case 1 where isEditing && indexPath.row == newListItems.count:
             let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! MyCell
-            cell.textField.placeholder = "List item"
+            cell.textField.text = "add list item"
+            cell.textField.isEnabled = false
             return cell
         case 1:
             let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! MyCell
-            cell.textField.text = newListItems[indexPath.row]
+            cell.textField.placeholder = newListItems[indexPath.row]
+            cell.textField.delegate = self
             return cell
         default:
             fatalError("Unexpected section")
@@ -110,8 +108,9 @@ class CreateListViewController: UITableViewController, UITextFieldDelegate {
         let cell = v as! MyCell
         let indPth = self.tableView.indexPath(for: cell)!
         if indPth.section == 1 {
-            if cell.textField.text != nil {
-                self.newListItems[indPth.row] = cell.textField.text!
+         print("/n/n/nFOO/n/n/")
+           if cell.textField.text != nil {
+                self.newListItems[indPth.row] = ("\(cell.textField.text!)")
             }
         } else if indPth.section == 0 {
             self.newListName = cell.textField.text!
@@ -119,10 +118,17 @@ class CreateListViewController: UITableViewController, UITextFieldDelegate {
         }
     }
     
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        self.navigationItem.rightBarButtonItem?.isEnabled = true
+    }
+    
     @IBAction func doneButton(_ sender: AnyObject) {
+        
         let listName = self.newListName
         listStore.createList(listName: listName)
         let list = listStore.allLists.last!
+//        var itemArray: [String] = []
+        
         let listItems = listStore.convertStringArray(someArray: newListItems)
         list.listItems = listItems
         self.dismiss(animated: true, completion: nil)
