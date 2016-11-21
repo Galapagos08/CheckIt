@@ -10,6 +10,20 @@ import Foundation
 
 class ListStore {
     var allLists: [List] = []
+    let listArchiveURL: URL = {
+        let documentsDirectories =
+            FileManager.default.urls(for: .documentDirectory,
+                                     in: .userDomainMask)
+        let documentDirectory = documentsDirectories.first!
+        return documentDirectory.appendingPathComponent("lists.archive")
+    }()
+    
+    init() {
+        if let archivedLists =
+            NSKeyedUnarchiver.unarchiveObject(withFile: listArchiveURL.path) as? [List] {
+            allLists += archivedLists
+        }
+    }
     
     func moveListAtIndex(_ fromIndex: Int, toIndex: Int) {
         if fromIndex == toIndex {
@@ -44,5 +58,9 @@ class ListStore {
         else {
             return listItems
         }
+    }
+    
+    func saveChanges()-> Bool {
+        return NSKeyedArchiver.archiveRootObject(allLists, toFile: listArchiveURL.path)
     }
 }

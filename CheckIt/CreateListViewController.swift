@@ -36,8 +36,6 @@ class CreateListViewController: UITableViewController, UITextFieldDelegate {
             return 1
         case 1 where isEditing:
             return newListItems.count+1
-//        case 1:
-//            return newListItems.count
         default:
             fatalError("Unexpected section")
         }
@@ -108,27 +106,24 @@ class CreateListViewController: UITableViewController, UITextFieldDelegate {
         let cell = v as! MyCell
         let indPth = self.tableView.indexPath(for: cell)!
         if indPth.section == 1 {
-         print("/n/n/nFOO/n/n/")
-           if cell.textField.text != nil {
-                self.newListItems[indPth.row] = ("\(cell.textField.text!)")
+         print("\n\n\nFOO\n\n")
+           if cell.textField.hasText {
+// this causes crash if editing is a deletion
+            self.newListItems[indPth.row] = ("\(cell.textField.text!)")
+            self.navigationItem.rightBarButtonItem?.isEnabled = true
             }
         } else if indPth.section == 0 {
             self.newListName = cell.textField.text!
-            self.navigationItem.rightBarButtonItem?.isEnabled = true
+            if cell.textField.hasText {
+                self.navigationItem.rightBarButtonItem?.isEnabled = true
+            }
         }
     }
     
-    func textFieldDidBeginEditing(_ textField: UITextField) {
-        self.navigationItem.rightBarButtonItem?.isEnabled = true
-    }
-    
     @IBAction func doneButton(_ sender: AnyObject) {
-        
         let listName = self.newListName
         listStore.createList(listName: listName)
         let list = listStore.allLists.last!
-//        var itemArray: [String] = []
-        
         let listItems = listStore.convertStringArray(someArray: newListItems)
         list.listItems = listItems
         self.dismiss(animated: true, completion: nil)

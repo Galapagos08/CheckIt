@@ -12,6 +12,7 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    let listStore = ListStore()
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         let listStore = ListStore()
@@ -21,5 +22,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
 
+    func applicationDidEnterBackground(_ application: UIApplication) {
+        let success = listStore.saveChanges()
+        if (success) {
+            print("Saved all of the Items")
+        }
+        else {
+            print("Could not save any of the Items")
+        }
+    }
+    
 }
 

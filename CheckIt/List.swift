@@ -12,6 +12,9 @@ class List: NSObject, NSCoding {
     var listName: String
     var listItems: [ListItem]
     
+    static let DocumentsDirectory = FileManager().urls(for: .documentDirectory, in: .userDomainMask).first!
+    static let ArchiveURL = DocumentsDirectory.appendingPathComponent("lists")
+    
     init(listName: String, listItems: [ListItem]) {
         self.listName = listName
         self.listItems = listItems
@@ -42,3 +45,5 @@ extension List {
     @nonobjc static let listNameKey: String = "listName"
     @nonobjc static let listItemsKey: String = "listItems"
 }
+
+

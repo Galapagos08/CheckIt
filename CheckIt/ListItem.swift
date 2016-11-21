@@ -11,6 +11,7 @@ import Foundation
 class ListItem: NSObject, NSCoding {
     var itemInfo: String
     var checked = false
+
     
     init(itemInfo: String, checked: Bool) {
         self.itemInfo = itemInfo
@@ -44,5 +45,8 @@ class ListItem: NSObject, NSCoding {
 }
 
 extension ListItem {
-    @nonobjc static let itemInfoKey: String = "itemInfo"
+    @nonobjc static let itemInfoKey: String = "ItemInfo"
+    @nonobjc static let checkedKey: String = "Checked"
 }
+
+

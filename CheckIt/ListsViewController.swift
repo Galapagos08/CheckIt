@@ -36,6 +36,9 @@ class ListsViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         tableView.reloadData()
+        if let savedLists = loadLists() {
+            lists += savedLists
+        }
     }
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -77,5 +80,15 @@ class ListsViewController: UITableViewController {
         self.present(navController, animated: true, completion: nil)
     }
     
+    func saveLists(){
+        let isSuccessfulSave = NSKeyedArchiver.archiveRootObject(lists, toFile: List.ArchiveURL.path)
+        if !isSuccessfulSave {
+            print("failed to save lists")
+        }
+    }
+    
+    func loadLists() -> [List]? {
+        return NSKeyedUnarchiver.unarchiveObject(withFile: List.ArchiveURL.path) as? [List]
+    }
 }
 
