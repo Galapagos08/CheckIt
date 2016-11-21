@@ -12,11 +12,9 @@ class ListItem: NSObject, NSCoding {
     var itemInfo: String
     var checked = false
 
-    
     init(itemInfo: String, checked: Bool) {
         self.itemInfo = itemInfo
         self.checked = false
-        super.init()
     }
     
     convenience init?(dictionary: [String: Any]) {
@@ -37,10 +35,6 @@ class ListItem: NSObject, NSCoding {
         checked = coder.decodeBool(forKey: "Checked")
         super.init()
     }
-    
-//    func toggleChecked(){
-//        checked = !checked
-//    }
     
 }
 

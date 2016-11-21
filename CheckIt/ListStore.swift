@@ -22,6 +22,7 @@ class ListStore {
         if let archivedLists =
             NSKeyedUnarchiver.unarchiveObject(withFile: listArchiveURL.path) as? [List] {
             allLists += archivedLists
+            print(allLists.count)
         }
     }
     
@@ -52,7 +53,6 @@ class ListStore {
                 let listItem = createListItem(itemInfo: item)
                 listItems.append(listItem)
             }
-            print(listItems[0].checked)
             return listItems
         }
         else {
@@ -61,6 +61,7 @@ class ListStore {
     }
     
     func saveChanges()-> Bool {
+        print("Saving lists to: \(listArchiveURL.path)")
         return NSKeyedArchiver.archiveRootObject(allLists, toFile: listArchiveURL.path)
     }
 }

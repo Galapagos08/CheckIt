@@ -15,7 +15,7 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="3TP-R4-5K4" id="5yX-Vc-csA">
-                <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NVh-sh-K1R">
@@ -35,7 +35,7 @@
             <connections>
                 <outlet property="textField" destination="NVh-sh-K1R" id="odH-fF-NBd"/>
             </connections>
-            <point key="canvasLocation" x="-83" y="-22"/>
+            <point key="canvasLocation" x="-434" y="-237"/>
         </tableViewCell>
     </objects>
 </document>

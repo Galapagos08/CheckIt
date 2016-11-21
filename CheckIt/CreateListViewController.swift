@@ -106,21 +106,16 @@ class CreateListViewController: UITableViewController, UITextFieldDelegate {
         let cell = v as! MyCell
         let indPth = self.tableView.indexPath(for: cell)!
         if indPth.section == 1 {
-         print("\n\n\nFOO\n\n")
            if cell.textField.hasText {
 // this causes crash if editing is a deletion
             self.newListItems[indPth.row] = ("\(cell.textField.text!)")
-            self.navigationItem.rightBarButtonItem?.isEnabled = true
             }
         } else if indPth.section == 0 {
             self.newListName = cell.textField.text!
-            if cell.textField.hasText {
-                self.navigationItem.rightBarButtonItem?.isEnabled = true
-            }
         }
     }
     
-    @IBAction func doneButton(_ sender: AnyObject) {
+    @IBAction func doneButton(_ sender: UIBarButtonItem) {
         let listName = self.newListName
         listStore.createList(listName: listName)
         let list = listStore.allLists.last!
@@ -129,6 +124,16 @@ class CreateListViewController: UITableViewController, UITextFieldDelegate {
         self.dismiss(animated: true, completion: nil)
     }
 
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        let text = (textField.text! as NSString).replacingCharacters(in: range, with: string)
+        if !text.isEmpty {
+            self.navigationItem.rightBarButtonItem?.isEnabled = true
+        } else {
+            self.navigationItem.rightBarButtonItem?.isEnabled = false
+        } 
+        return true
+    }
+    
     override func setEditing(_ editing: Bool, animated: Bool) {
         super.setEditing(editing, animated: animated)
     }

@@ -25,11 +25,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationDidEnterBackground(_ application: UIApplication) {
         let success = listStore.saveChanges()
         if (success) {
-            print("Saved all of the Items")
+             print("\(listStore.allLists.count)")           
         }
-        else {
-            print("Could not save any of the Items")
-        }
+        
     }
     
 }
