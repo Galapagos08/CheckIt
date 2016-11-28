@@ -34,6 +34,7 @@ class ListStore {
         let movedList = allLists[fromIndex]
         allLists.remove(at: fromIndex)
         allLists.insert(movedList, at: toIndex)
+        saveChanges()
     }
     
     func createList(listName: String)-> Void {
@@ -64,11 +65,12 @@ class ListStore {
     func removeList(_ list: List) {
         if let index = allLists.index(of: list) {
             allLists.remove(at: index)
+            saveChanges()
         }
     }
     
-    func saveChanges()-> Bool {
+    func saveChanges()-> Void {
         print("\nSaving \(allLists.count) lists to: \(listArchiveURL.path) \n")
-        return NSKeyedArchiver.archiveRootObject(allLists, toFile: listArchiveURL.path)
+        NSKeyedArchiver.archiveRootObject(allLists, toFile: listArchiveURL.path)
     }
 }

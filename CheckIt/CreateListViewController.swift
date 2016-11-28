@@ -13,6 +13,7 @@ class CreateListViewController: UITableViewController, UITextFieldDelegate {
     var listStore: ListStore = ListStore()
     var newListName: String = ""
     var newListItems: [String] = []
+    var listNameTextField: UITextField?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -78,6 +79,7 @@ class CreateListViewController: UITableViewController, UITextFieldDelegate {
         switch indexPath.section {
         case 0:
             let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! MyCell
+            listNameTextField = cell.textField
             cell.textField.placeholder = "List name"
             cell.textField.delegate = self
             return cell
@@ -90,6 +92,7 @@ class CreateListViewController: UITableViewController, UITextFieldDelegate {
             let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! MyCell
             cell.textField.placeholder = newListItems[indexPath.row]
             cell.textField.delegate = self
+            cell.textField.tag = indexPath.row
             return cell
         default:
             fatalError("Unexpected section")
@@ -98,19 +101,6 @@ class CreateListViewController: UITableViewController, UITextFieldDelegate {
     
     @IBAction func cancelButton(_ sender: AnyObject) {
         self.dismiss(animated: true, completion: nil)
-    }
-    
-    func textFieldDidEndEditing(_ textField: UITextField) {
-        var v: UIView = textField
-        repeat {v = v.superview! } while !(v is UITableViewCell)
-        let cell = v as! MyCell
-        let indPth = self.tableView.indexPath(for: cell)!
-        if indPth.section == 1 {
-// this causes crash if editing is a deletion and textfield is empty
-            self.newListItems[indPth.row] = ("\(cell.textField.text!)")
-        } else if indPth.section == 0 {
-            self.newListName = cell.textField.text!
-        }
     }
     
     @IBAction func doneButton(_ sender: UIBarButtonItem) {
@@ -125,18 +115,24 @@ class CreateListViewController: UITableViewController, UITextFieldDelegate {
     }
 
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-// if text is added to a field and button becomes enabled, entering and then deleting text in a separte field can cause button to become disabled
-        let text = (textField.text! as NSString).replacingCharacters(in: range, with: string)
-        if !text.isEmpty {
-            self.navigationItem.rightBarButtonItem?.isEnabled = true
+        if textField == listNameTextField {
+            let text = (textField.text! as NSString).replacingCharacters(in: range, with: string)
+            self.newListName = text
+            if text.isEmpty {
+                self.navigationItem.rightBarButtonItem?.isEnabled = false
+            } else {
+                self.navigationItem.rightBarButtonItem?.isEnabled = true
+            }
         } else {
-            self.navigationItem.rightBarButtonItem?.isEnabled = false
-        } 
+            let row = textField.tag
+            newListItems[row] = (textField.text! as NSString).replacingCharacters(in: range, with: string)
+        }
         return true
     }
     
     override func setEditing(_ editing: Bool, animated: Bool) {
         super.setEditing(editing, animated: animated)
     }
+    
     
 }
