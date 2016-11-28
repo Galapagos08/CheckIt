@@ -106,10 +106,8 @@ class CreateListViewController: UITableViewController, UITextFieldDelegate {
         let cell = v as! MyCell
         let indPth = self.tableView.indexPath(for: cell)!
         if indPth.section == 1 {
-           if cell.textField.hasText {
-// this causes crash if editing is a deletion
+// this causes crash if editing is a deletion and textfield is empty
             self.newListItems[indPth.row] = ("\(cell.textField.text!)")
-            }
         } else if indPth.section == 0 {
             self.newListName = cell.textField.text!
         }
@@ -121,10 +119,12 @@ class CreateListViewController: UITableViewController, UITextFieldDelegate {
         let list = listStore.allLists.last!
         let listItems = listStore.convertStringArray(someArray: newListItems)
         list.listItems = listItems
+        print("\nadded \(listStore.allLists.count) to allLists\n")
         self.dismiss(animated: true, completion: nil)
     }
 
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+// if text is added to a field and button becomes enabled, entering and then deleting text in a separte field can cause button to become disabled
         let text = (textField.text! as NSString).replacingCharacters(in: range, with: string)
         if !text.isEmpty {
             self.navigationItem.rightBarButtonItem?.isEnabled = true

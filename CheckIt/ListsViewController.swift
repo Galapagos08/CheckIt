@@ -11,7 +11,12 @@ import UIKit
 class ListsViewController: UITableViewController {
 
     var listStore: ListStore = ListStore()
-//    var lists: [List] = []
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        
+        navigationItem.leftBarButtonItem = editButtonItem
+    }
     
     func cellForTableView(_ tableView: UITableView)-> UITableViewCell {
         let cellIdentifier = "List Cell"
@@ -39,17 +44,16 @@ class ListsViewController: UITableViewController {
     }
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        if listStore.allLists.count == 0 {
-            return 0
-        }
         return 1
     }
     
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView,
+                            numberOfRowsInSection section: Int) -> Int {
         return listStore.allLists.count
     }
     
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath)-> UITableViewCell {
+    override func tableView(_ tableView: UITableView,
+                            cellForRowAt indexPath: IndexPath)-> UITableViewCell {
         let cell = cellForTableView(tableView)
         cell.accessoryType = .disclosureIndicator
         let lists = listStore.allLists
@@ -66,6 +70,33 @@ class ListsViewController: UITableViewController {
                 let listDetailVC = segue.destination as! ListDetailViewController
                 listDetailVC.list = list
             }
+        }
+    }
+    
+    override func tableView(_ tableView: UITableView,
+                            moveRowAt sourceIndexPath: IndexPath,
+                            to destinationIndexPath: IndexPath) {
+        listStore.moveListAtIndex((sourceIndexPath as NSIndexPath).row, toIndex: (destinationIndexPath as NSIndexPath).row)
+    }
+    
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            let list = listStore.allLists[indexPath.row]
+            let title = "Delete \(list.listName)?"
+            let message = "Are you sure you want to delete this checklist?"
+            
+            let ac = UIAlertController(title: title, message: message, preferredStyle: .actionSheet)
+            
+            let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+            ac.addAction(cancelAction)
+            
+            let deleteAction = UIAlertAction(title: "Delete", style: .destructive, handler: { (action) -> Void in
+                self.listStore.removeList(list)
+                self.tableView.deleteRows(at: [indexPath], with: .automatic)
+            })
+            ac.addAction(deleteAction)
+            
+            present(ac, animated: true, completion: nil)
         }
     }
     

@@ -10,6 +10,7 @@ import Foundation
 
 class ListStore {
     var allLists: [List] = []
+    
     let listArchiveURL: URL = {
         let documentsDirectories =
             FileManager.default.urls(for: .documentDirectory,
@@ -22,7 +23,7 @@ class ListStore {
         if let archivedLists =
             NSKeyedUnarchiver.unarchiveObject(withFile: listArchiveURL.path) as? [List] {
             allLists += archivedLists
-            print(allLists.count)
+            print("archivedLists include \(allLists.count) lists")
         }
     }
     
@@ -60,8 +61,14 @@ class ListStore {
         }
     }
     
+    func removeList(_ list: List) {
+        if let index = allLists.index(of: list) {
+            allLists.remove(at: index)
+        }
+    }
+    
     func saveChanges()-> Bool {
-        print("Saving lists to: \(listArchiveURL.path)")
+        print("\nSaving \(allLists.count) lists to: \(listArchiveURL.path) \n")
         return NSKeyedArchiver.archiveRootObject(allLists, toFile: listArchiveURL.path)
     }
 }
