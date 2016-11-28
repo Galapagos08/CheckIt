@@ -22,13 +22,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
 
-    func applicationDidEnterBackground(_ application: UIApplication) {
-        let success = listStore.saveChanges()
-        if (success) {
-             print("\nsaved \(listStore.allLists.count)\n")
-        }
-        
-    }
+//    func applicationDidEnterBackground(_ application: UIApplication) {
+//        let success = listStore.saveChanges()
+//        if (success) {
+//             print("\nsaved \(listStore.allLists.count)\n")
+//        }
+//        
+//    }
     
 }
 

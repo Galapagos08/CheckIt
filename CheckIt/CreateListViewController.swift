@@ -119,6 +119,7 @@ class CreateListViewController: UITableViewController, UITextFieldDelegate {
         let list = listStore.allLists.last!
         let listItems = listStore.convertStringArray(someArray: newListItems)
         list.listItems = listItems
+        listStore.saveChanges()
         print("\nadded \(listStore.allLists.count) to allLists\n")
         self.dismiss(animated: true, completion: nil)
     }
