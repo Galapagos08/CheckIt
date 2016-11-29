@@ -36,6 +36,11 @@ class ListDetailViewController: UITableViewController, UITextFieldDelegate {
         return cell
     }
     
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+            self.listStore.saveChanges()
+        return true
+    }
+    
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true
     }
