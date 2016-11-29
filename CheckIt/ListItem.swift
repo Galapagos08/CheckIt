@@ -36,6 +36,10 @@ class ListItem: NSObject, NSCoding {
         super.init()
     }
     
+    func toggleChecked() {
+        checked = !checked
+    }
+    
 }
 
 extension ListItem {

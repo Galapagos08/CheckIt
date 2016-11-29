@@ -15,7 +15,6 @@ class ListDetailViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "\(list.listName)"
-        self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
     }
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -27,15 +26,33 @@ class ListDetailViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell: UITableViewCell! = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! ListItemCell
         let listItems = list.listItems
         let listItem = listItems[indexPath.row]
-        cell.textLabel!.text = listItem.itemInfo
+        cell.itemInfoLabel.text = listItem.itemInfo
+        displayCheckedStatus(cell, withListItem: listItem)
         return cell
     }
  
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let cell = tableView.cellForRow(at: indexPath) as! ListItemCell
+        let listItems = list.listItems
+        let listItem = listItems[indexPath.row]
+        listItem.toggleChecked()
+        displayCheckedStatus(cell, withListItem: listItem)
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
+    func displayCheckedStatus(_ cell: ListItemCell, withListItem item: ListItem) {
+        if item.checked {
+            cell.checkedLabel.text = "✓"
+        } else {
+            cell.checkedLabel.text = ""
+        }
     }
  
  }

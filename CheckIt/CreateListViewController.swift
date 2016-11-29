@@ -134,5 +134,4 @@ class CreateListViewController: UITableViewController, UITextFieldDelegate {
         super.setEditing(editing, animated: animated)
     }
     
-    
 }
