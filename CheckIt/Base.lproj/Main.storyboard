@@ -116,6 +116,13 @@
                             <outlet property="delegate" destination="c76-E3-Sji" id="HAG-qj-R7c"/>
                         </connections>
                     </tableView>
+                    <toolbarItems>
+                        <barButtonItem title="Reset" id="hQS-sk-dhT">
+                            <connections>
+                                <action selector="resetChecks:" destination="c76-E3-Sji" id="zuO-Ya-whI"/>
+                            </connections>
+                        </barButtonItem>
+                    </toolbarItems>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="X4Z-V6-12F" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -164,13 +171,17 @@
         <!--Navigation Controller-->
         <scene sceneID="XSb-8n-0Jy">
             <objects>
-                <navigationController storyboardIdentifier="Main Nav" automaticallyAdjustsScrollViewInsets="NO" id="Fsh-g7-32y" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="Main Nav" automaticallyAdjustsScrollViewInsets="NO" toolbarHidden="NO" id="Fsh-g7-32y" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="P4t-SO-oNa">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="RIk-2n-Qsb">
+                        <rect key="frame" x="0.0" y="623" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
                     <connections>
                         <segue destination="GP9-rS-Tpz" kind="relationship" relationship="rootViewController" id="CCD-0I-OCf"/>
                     </connections>

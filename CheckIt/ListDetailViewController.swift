@@ -55,4 +55,12 @@ class ListDetailViewController: UITableViewController {
         }
     }
  
+    @IBAction func resetChecks(_ sender: UIBarButtonItem) {
+        let listItems = list.listItems
+        for listItem in listItems {
+            listItem.checked = false
+            tableView.reloadData()
+        }
+    }
+    
  }
