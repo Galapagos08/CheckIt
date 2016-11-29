@@ -11,6 +11,7 @@ import UIKit
 class ListDetailViewController: UITableViewController {
 
     var list: List!
+    var listStore = ListStore()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -57,10 +58,25 @@ class ListDetailViewController: UITableViewController {
  
     @IBAction func resetChecks(_ sender: UIBarButtonItem) {
         let listItems = list.listItems
-        for listItem in listItems {
-            listItem.checked = false
-            tableView.reloadData()
-        }
+        let title = "Reset \(list.listName)?"
+        let message = "Are you sure you want to reset this list by unchecking all items?"
+        
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .actionSheet)
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        alertController.addAction(cancelAction)
+        
+        let resetAction = UIAlertAction(title: "Reset", style: .destructive, handler: { (action) -> Void in
+            for listItem in listItems {
+                listItem.checked = false
+                self.listStore.saveChanges()
+                self.tableView.reloadData()
+            }
+        })
+        alertController.addAction(resetAction)
+        
+        present(alertController, animated: true, completion: nil)
     }
+    
     
  }

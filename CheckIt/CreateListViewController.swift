@@ -10,7 +10,7 @@ import UIKit
 
 class CreateListViewController: UITableViewController, UITextFieldDelegate {
 
-    var listStore: ListStore = ListStore()
+    var listStore = ListStore()
     var newListName: String = ""
     var newListItems: [String] = []
     var listNameTextField: UITextField?
