@@ -8,8 +8,8 @@
 
 import UIKit
 
-class ListDetailViewController: UITableViewController {
-
+class ListDetailViewController: UITableViewController, UITextFieldDelegate {
+    
     var list: List!
     var listStore = ListStore()
     
@@ -17,7 +17,7 @@ class ListDetailViewController: UITableViewController {
         super.viewDidLoad()
         title = "\(list.listName)"
     }
-
+    
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -25,16 +25,17 @@ class ListDetailViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return list.listItems.count
     }
-
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! ListItemCell
         let listItems = list.listItems
         let listItem = listItems[indexPath.row]
         cell.itemInfoLabel.text = listItem.itemInfo
         displayCheckedStatus(cell, withListItem: listItem)
+        cell.checkedTextField.delegate = self
         return cell
     }
- 
+    
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true
     }
@@ -50,12 +51,12 @@ class ListDetailViewController: UITableViewController {
     
     func displayCheckedStatus(_ cell: ListItemCell, withListItem item: ListItem) {
         if item.checked {
-            cell.checkedLabel.text = "✓"
+            cell.checkedTextField.text = "✓"
         } else {
-            cell.checkedLabel.text = ""
+            cell.checkedTextField.text = ""
         }
     }
- 
+    
     @IBAction func resetChecks(_ sender: UIBarButtonItem) {
         let listItems = list.listItems
         let title = "Reset \(list.listName)?"
@@ -67,11 +68,8 @@ class ListDetailViewController: UITableViewController {
         alertController.addAction(cancelAction)
         
         let resetAction = UIAlertAction(title: "Reset", style: .destructive, handler: { (action) -> Void in
-            for listItem in listItems {
-                listItem.checked = false
-                self.listStore.saveChanges()
-                self.tableView.reloadData()
-            }
+            self.listStore.uncheckItems(listItems: listItems)
+            self.tableView.reloadData()
         })
         alertController.addAction(resetAction)
         
@@ -79,4 +77,4 @@ class ListDetailViewController: UITableViewController {
     }
     
     
- }
+}

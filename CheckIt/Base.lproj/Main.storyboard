@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -80,33 +81,35 @@
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="29q-fU-eTj">
-                                            <rect key="frame" x="8" y="11" width="21" height="21"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="21" id="8Nd-43-pMb"/>
-                                                <constraint firstAttribute="width" constant="21" id="awy-zm-MoT"/>
-                                            </constraints>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z8w-bV-QW2">
-                                            <rect key="frame" x="37" y="11" width="330" height="21"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
+                                        <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="r7u-ZT-EiU">
+                                            <rect key="frame" x="8" y="11" width="359" height="21"/>
+                                            <subviews>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DRV-IL-IYV">
+                                                    <rect key="frame" x="0.0" y="0.0" width="20.5" height="20.5"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" secondItem="DRV-IL-IYV" secondAttribute="height" multiplier="1:1" id="wwA-TM-IUo"/>
+                                                    </constraints>
+                                                    <nil key="textColor"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits"/>
+                                                </textField>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z8w-bV-QW2">
+                                                    <rect key="frame" x="28.5" y="0.0" width="330.5" height="20.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </stackView>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="Z8w-bV-QW2" firstAttribute="leading" secondItem="29q-fU-eTj" secondAttribute="trailing" constant="8" id="2lA-v1-3ew"/>
-                                        <constraint firstItem="Z8w-bV-QW2" firstAttribute="centerY" secondItem="MZa-8J-8CG" secondAttribute="centerY" id="nIS-UV-1au"/>
-                                        <constraint firstAttribute="trailingMargin" secondItem="Z8w-bV-QW2" secondAttribute="trailing" id="ylA-DS-GD2"/>
-                                        <constraint firstAttribute="leadingMargin" secondItem="29q-fU-eTj" secondAttribute="leading" id="yyx-F1-d4J"/>
-                                        <constraint firstItem="29q-fU-eTj" firstAttribute="centerY" secondItem="MZa-8J-8CG" secondAttribute="centerY" id="zUa-cW-ah6"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="r7u-ZT-EiU" secondAttribute="trailing" id="WfM-ZY-h4s"/>
+                                        <constraint firstItem="r7u-ZT-EiU" firstAttribute="centerY" secondItem="MZa-8J-8CG" secondAttribute="centerY" id="Y2n-ju-xzV"/>
+                                        <constraint firstItem="r7u-ZT-EiU" firstAttribute="leading" secondItem="MZa-8J-8CG" secondAttribute="leadingMargin" id="njL-8y-L06"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="checkedLabel" destination="29q-fU-eTj" id="85o-XT-85z"/>
+                                    <outlet property="checkedTextField" destination="DRV-IL-IYV" id="G4X-KT-yd4"/>
                                     <outlet property="itemInfoLabel" destination="Z8w-bV-QW2" id="MGX-gg-glh"/>
                                 </connections>
                             </tableViewCell>

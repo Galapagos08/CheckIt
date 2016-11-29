@@ -10,8 +10,8 @@ import UIKit
 
 class ListItemCell: UITableViewCell {
 
-    @IBOutlet weak var checkedLabel: UILabel!
     @IBOutlet weak var itemInfoLabel: UILabel!
+    @IBOutlet weak var checkedTextField: UITextField!
    
 
 }

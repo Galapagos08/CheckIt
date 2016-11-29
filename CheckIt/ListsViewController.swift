@@ -41,6 +41,7 @@ class ListsViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         tableView.reloadData()
+        listStore.saveChanges()
     }
 
     override func numberOfSections(in tableView: UITableView) -> Int {

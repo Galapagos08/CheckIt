@@ -6,7 +6,7 @@
 //  Copyright © 2016 Dan Esrey. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 class ListStore {
     var allLists: [List] = []
@@ -60,6 +60,13 @@ class ListStore {
         else {
             return listItems
         }
+    }
+    
+    func uncheckItems(listItems: [ListItem])-> Void {
+        for listItem in listItems {
+            listItem.checked = false
+        }
+        saveChanges()
     }
     
     func removeList(_ list: List) {
