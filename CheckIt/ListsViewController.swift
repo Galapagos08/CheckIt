@@ -58,8 +58,9 @@ class ListsViewController: UITableViewController {
         cell.accessoryType = .disclosureIndicator
         let lists = listStore.allLists
         let list = lists[indexPath.row]
+        let uncheckedItemCount = list.countUncheckedItems()
         cell.textLabel!.text = list.listName
-        cell.detailTextLabel?.text = "\(list.listItems.count) items"
+        cell.detailTextLabel?.text = "\(list.listItems.count) total items / \(uncheckedItemCount) incomplete"
         return cell
     }
     

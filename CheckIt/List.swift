@@ -17,14 +17,6 @@ class List: NSObject, NSCoding {
         self.listItems = listItems
     }
     
-//    convenience init?(dictionary: [String: Any]) {
-//        guard let listName = dictionary[List.listNameKey] as? String,
-//            let listItems = dictionary[List.listItemsKey] as? [ListItem] else {
-//                return nil
-//        }
-//        self.init(listName: listName, listItems: listItems)
-//    }
-    
     func encode(with aCoder: NSCoder) {
         aCoder.encode(listName, forKey: "listName")
         aCoder.encode(listItems, forKey: "listItems")
@@ -34,6 +26,14 @@ class List: NSObject, NSCoding {
         listName = coder.decodeObject(forKey: "listName") as! String
         listItems = coder.decodeObject(forKey: "listItems") as! [ListItem]
         super.init()
+    }
+    
+    func countUncheckedItems()-> Int {
+        var count = 0
+        for listItem in listItems where !listItem.checked {
+            count += 1
+        }
+        return count
     }
 }
 
