@@ -66,7 +66,6 @@ class ListStore {
         for listItem in listItems {
             listItem.checked = false
         }
-        saveChanges()
     }
     
     func removeList(_ list: List) {

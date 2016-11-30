@@ -75,6 +75,7 @@ class ListsViewController: UITableViewController {
                 let list = listStore.allLists[row]
                 let listDetailVC = segue.destination as! ListDetailViewController
                 listDetailVC.list = list
+                listDetailVC.listStore = listStore
             }
         }
     }

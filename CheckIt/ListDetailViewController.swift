@@ -11,7 +11,7 @@ import UIKit
 class ListDetailViewController: UITableViewController, UITextFieldDelegate {
     
     var list: List!
-    var listStore = ListStore()
+    var listStore: ListStore!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,10 +36,11 @@ class ListDetailViewController: UITableViewController, UITextFieldDelegate {
         return cell
     }
     
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-            self.listStore.saveChanges()
-        return true
-    }
+//    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+//            self.listStore.saveChanges()
+//        print("the textField change should prompt saving updates")
+//        return true
+//    }
     
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true
@@ -52,6 +53,7 @@ class ListDetailViewController: UITableViewController, UITextFieldDelegate {
         listItem.toggleChecked()
         displayCheckedStatus(cell, withListItem: listItem)
         tableView.deselectRow(at: indexPath, animated: true)
+        listStore.saveChanges()
     }
     
     func displayCheckedStatus(_ cell: ListItemCell, withListItem item: ListItem) {
@@ -75,6 +77,7 @@ class ListDetailViewController: UITableViewController, UITextFieldDelegate {
         let resetAction = UIAlertAction(title: "Reset", style: .destructive, handler: { (action) -> Void in
             self.listStore.uncheckItems(listItems: listItems)
             self.tableView.reloadData()
+            self.listStore.saveChanges()
         })
         alertController.addAction(resetAction)
         
