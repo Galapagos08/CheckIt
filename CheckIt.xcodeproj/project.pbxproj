@@ -11,7 +11,8 @@
 		F7026B041DDB756C0055DA73 /* MyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7026B021DDB756C0055DA73 /* MyCell.swift */; };
 		F7026B051DDB756C0055DA73 /* MyCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F7026B031DDB756C0055DA73 /* MyCell.xib */; };
 		F707F1311DD3C0500051A7CF /* ListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F707F1301DD3C0500051A7CF /* ListItem.swift */; };
-		F70DEC2D1DEDD62000947325 /* ListItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F70DEC2C1DEDD62000947325 /* ListItemCell.swift */; };
+		F70DEC301DEF273500947325 /* ChecklistItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F70DEC2E1DEF273500947325 /* ChecklistItemCell.swift */; };
+		F70DEC311DEF273500947325 /* ChecklistItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F70DEC2F1DEF273500947325 /* ChecklistItemCell.xib */; };
 		F753D2AE1DD120C100699604 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F753D2AD1DD120C100699604 /* AppDelegate.swift */; };
 		F753D2B01DD120C100699604 /* ListsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F753D2AF1DD120C100699604 /* ListsViewController.swift */; };
 		F753D2B31DD120C100699604 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F753D2B11DD120C100699604 /* Main.storyboard */; };
@@ -46,7 +47,8 @@
 		F7026B021DDB756C0055DA73 /* MyCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyCell.swift; sourceTree = "<group>"; };
 		F7026B031DDB756C0055DA73 /* MyCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyCell.xib; sourceTree = "<group>"; };
 		F707F1301DD3C0500051A7CF /* ListItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListItem.swift; sourceTree = "<group>"; };
-		F70DEC2C1DEDD62000947325 /* ListItemCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListItemCell.swift; sourceTree = "<group>"; };
+		F70DEC2E1DEF273500947325 /* ChecklistItemCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChecklistItemCell.swift; sourceTree = "<group>"; };
+		F70DEC2F1DEF273500947325 /* ChecklistItemCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChecklistItemCell.xib; sourceTree = "<group>"; };
 		F753D2AA1DD120C100699604 /* CheckIt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CheckIt.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F753D2AD1DD120C100699604 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F753D2AF1DD120C100699604 /* ListsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListsViewController.swift; sourceTree = "<group>"; };
@@ -117,12 +119,13 @@
 				F7026AF81DDA22BC0055DA73 /* CreateListViewController.swift */,
 				F753D2AF1DD120C100699604 /* ListsViewController.swift */,
 				F7C8B3501DD255CC00F9ADFA /* ListDetailViewController.swift */,
+				F70DEC2E1DEF273500947325 /* ChecklistItemCell.swift */,
+				F70DEC2F1DEF273500947325 /* ChecklistItemCell.xib */,
 				F753D2DB1DD120E500699604 /* List.swift */,
 				F707F1301DD3C0500051A7CF /* ListItem.swift */,
 				F7C8B34C1DD2413200F9ADFA /* ListStore.swift */,
 				F753D2B41DD120C100699604 /* Assets.xcassets */,
 				F753D2B11DD120C100699604 /* Main.storyboard */,
-				F70DEC2C1DEDD62000947325 /* ListItemCell.swift */,
 				F7026B021DDB756C0055DA73 /* MyCell.swift */,
 				F7026B031DDB756C0055DA73 /* MyCell.xib */,
 				F753D2B61DD120C100699604 /* LaunchScreen.storyboard */,
@@ -259,6 +262,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F70DEC311DEF273500947325 /* ChecklistItemCell.xib in Resources */,
 				F753D2B81DD120C100699604 /* LaunchScreen.storyboard in Resources */,
 				F7026B051DDB756C0055DA73 /* MyCell.xib in Resources */,
 				F753D2B51DD120C100699604 /* Assets.xcassets in Resources */,
@@ -292,10 +296,10 @@
 				F7026AF91DDA22BC0055DA73 /* CreateListViewController.swift in Sources */,
 				F753D2DC1DD120E500699604 /* List.swift in Sources */,
 				F753D2AE1DD120C100699604 /* AppDelegate.swift in Sources */,
+				F70DEC301DEF273500947325 /* ChecklistItemCell.swift in Sources */,
 				F7026B041DDB756C0055DA73 /* MyCell.swift in Sources */,
 				F7C8B3511DD255CC00F9ADFA /* ListDetailViewController.swift in Sources */,
 				F7C8B34D1DD2413200F9ADFA /* ListStore.swift in Sources */,
-				F70DEC2D1DEDD62000947325 /* ListItemCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

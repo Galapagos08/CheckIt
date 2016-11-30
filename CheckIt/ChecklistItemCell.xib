@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" id="nVt-Nf-V7i" customClass="ChecklistItemCell" customModule="CheckIt" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="nVt-Nf-V7i" id="4Qw-47-2RT">
+                <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="YVW-6P-VnF">
+                        <rect key="frame" x="8" y="11" width="359" height="20.5"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GcG-FH-BVX">
+                                <rect key="frame" x="0.0" y="0.0" width="20.5" height="20.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="GcG-FH-BVX" secondAttribute="height" multiplier="1:1" id="Qeh-Md-Ajo"/>
+                                    <constraint firstAttribute="height" constant="20.5" id="hDD-Tv-zYK"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pSn-lE-6B7">
+                                <rect key="frame" x="28.5" y="0.0" width="330.5" height="20.5"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                    </stackView>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="YVW-6P-VnF" firstAttribute="leading" secondItem="4Qw-47-2RT" secondAttribute="leadingMargin" id="Go0-Xx-9un"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="YVW-6P-VnF" secondAttribute="trailing" id="bRS-h8-HN8"/>
+                    <constraint firstItem="YVW-6P-VnF" firstAttribute="centerY" secondItem="4Qw-47-2RT" secondAttribute="centerY" id="gQT-jM-6kG"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="checkedLabel" destination="GcG-FH-BVX" id="VNs-6Z-dhO"/>
+                <outlet property="itemInfoTextField" destination="pSn-lE-6B7" id="R0m-HV-DTK"/>
+            </connections>
+            <point key="canvasLocation" x="5.5" y="-57"/>
+        </tableViewCell>
+    </objects>
+</document>

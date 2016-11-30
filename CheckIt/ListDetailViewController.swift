@@ -12,10 +12,16 @@ class ListDetailViewController: UITableViewController, UITextFieldDelegate {
     
     var list: List!
     var listStore: ListStore!
+    var listItemTextField: UITextField?
        
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "\(list.listName)"
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.tableView.register(UINib(nibName: "ChecklistItemCell", bundle: nil), forCellReuseIdentifier: "Cell")
         self.navigationItem.rightBarButtonItem = editButtonItem
     }
     
@@ -28,12 +34,14 @@ class ListDetailViewController: UITableViewController, UITextFieldDelegate {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! ListItemCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! ChecklistItemCell
+        listItemTextField = cell.itemInfoTextField
         let listItems = list.listItems
         let listItem = listItems[indexPath.row]
-        cell.itemInfoLabel.text = listItem.itemInfo
+        cell.itemInfoTextField.text = listItem.itemInfo
+        cell.itemInfoTextField.isEnabled = false
         displayCheckedStatus(cell, withListItem: listItem)
-        cell.checkedTextField.delegate = self
+        cell.itemInfoTextField.delegate = self
         return cell
     }
     
@@ -42,7 +50,7 @@ class ListDetailViewController: UITableViewController, UITextFieldDelegate {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let cell = tableView.cellForRow(at: indexPath) as! ListItemCell
+        let cell = tableView.cellForRow(at: indexPath) as!ChecklistItemCell
         let listItems = list.listItems
         let listItem = listItems[indexPath.row]
         listItem.toggleChecked()
@@ -51,11 +59,11 @@ class ListDetailViewController: UITableViewController, UITextFieldDelegate {
         listStore.saveChanges()
     }
     
-    func displayCheckedStatus(_ cell: ListItemCell, withListItem item: ListItem) {
+    func displayCheckedStatus(_ cell: ChecklistItemCell, withListItem item: ListItem) {
         if item.checked {
-            cell.checkedTextField.text = "✓"
+            cell.checkedLabel.text = "✓"
         } else {
-            cell.checkedTextField.text = ""
+            cell.checkedLabel.text = ""
         }
     }
     
