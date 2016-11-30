@@ -38,15 +38,58 @@ class ListDetailViewController: UITableViewController, UITextFieldDelegate {
         listItemTextField = cell.itemInfoTextField
         let listItems = list.listItems
         let listItem = listItems[indexPath.row]
+        cell.itemInfoTextField.placeholder = "add list item"
         cell.itemInfoTextField.text = listItem.itemInfo
         cell.itemInfoTextField.isEnabled = false
         displayCheckedStatus(cell, withListItem: listItem)
         cell.itemInfoTextField.delegate = self
+        cell.itemInfoTextField.tag = indexPath.row
         return cell
     }
     
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true
+    }
+    
+    override func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCellEditingStyle {
+        let rowCount = self.tableView(tableView, numberOfRowsInSection: indexPath.section)
+        if rowCount-1 == indexPath.row {
+            return .insert
+        }
+        return .delete
+    }
+    
+    override func setEditing(_ editing: Bool, animated: Bool) {
+        super.setEditing(editing, animated: animated)
+        switch isEditing {
+        case true:
+            let itemCount = self.list.listItems.count
+            tableView.beginUpdates()
+            let newListItem = self.listStore.createListItem(itemInfo: "")
+            self.list.listItems.append(newListItem)
+            tableView.insertRows(at: [IndexPath(row: itemCount-1, section: 0)], with: .automatic)
+            tableView.endUpdates()
+        default:
+            break
+        }
+        
+    }
+
+    
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        tableView.beginUpdates()
+        switch editingStyle {
+        case .insert:
+            let newListItem = self.listStore.createListItem(itemInfo: "")
+            self.list.listItems.append(newListItem)
+            tableView.insertRows(at: [indexPath], with: .automatic)
+        case .delete:
+            self.list.listItems.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .automatic)
+        default:
+            break
+        }
+        tableView.endUpdates()
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -87,4 +130,9 @@ class ListDetailViewController: UITableViewController, UITextFieldDelegate {
         present(alertController, animated: true, completion: nil)
     }
     
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        let row = textField.tag
+        list.listItems[row].itemInfo = (textField.text! as NSString).replacingCharacters(in: range, with: string)
+        return true
+    }
 }
