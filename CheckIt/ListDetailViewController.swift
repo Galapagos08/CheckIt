@@ -12,10 +12,11 @@ class ListDetailViewController: UITableViewController, UITextFieldDelegate {
     
     var list: List!
     var listStore: ListStore!
-    
+       
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "\(list.listName)"
+        self.navigationItem.rightBarButtonItem = editButtonItem
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -35,12 +36,6 @@ class ListDetailViewController: UITableViewController, UITextFieldDelegate {
         cell.checkedTextField.delegate = self
         return cell
     }
-    
-//    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-//            self.listStore.saveChanges()
-//        print("the textField change should prompt saving updates")
-//        return true
-//    }
     
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true
@@ -83,6 +78,5 @@ class ListDetailViewController: UITableViewController, UITextFieldDelegate {
         
         present(alertController, animated: true, completion: nil)
     }
-    
     
 }
