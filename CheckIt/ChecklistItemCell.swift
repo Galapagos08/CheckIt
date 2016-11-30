@@ -12,9 +12,5 @@ class ChecklistItemCell: UITableViewCell {
 
     @IBOutlet weak var itemInfoTextField: UITextField!
     @IBOutlet weak var checkedLabel: UILabel!
-    
-    override func didTransition(to state: UITableViewCellStateMask) {
-        self.itemInfoTextField.isEnabled = state.contains(.showingEditControlMask)
-        super.didTransition(to: state)
-    }
+        
 }

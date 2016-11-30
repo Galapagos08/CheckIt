@@ -55,45 +55,55 @@ class ListDetailViewController: UITableViewController, UITextFieldDelegate {
         let rowCount = self.tableView(tableView, numberOfRowsInSection: indexPath.section)
         if rowCount-1 == indexPath.row {
             return .insert
-        }
+        } else {
         return .delete
+        }
     }
     
     override func setEditing(_ editing: Bool, animated: Bool) {
         super.setEditing(editing, animated: animated)
+        let itemCount = self.list.listItems.count
         switch isEditing {
         case true:
-            let itemCount = self.list.listItems.count
             tableView.beginUpdates()
             let newListItem = self.listStore.createListItem(itemInfo: "")
             self.list.listItems.append(newListItem)
             tableView.insertRows(at: [IndexPath(row: itemCount-1, section: 0)], with: .automatic)
+            tableView.reloadData()
             tableView.endUpdates()
-        default:
-            break
+        case false:
+            tableView.beginUpdates()
+            tableView.deleteRows(at: [IndexPath(row: itemCount-1, section: 0)], with: .automatic)
+            self.list.listItems.remove(at: itemCount-1)
+            tableView.reloadData()
+            tableView.endUpdates()
         }
-        
     }
 
     
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        tableView.beginUpdates()
+        tableView.endEditing(true)
         switch editingStyle {
         case .insert:
             let newListItem = self.listStore.createListItem(itemInfo: "")
             self.list.listItems.append(newListItem)
+            tableView.beginUpdates()
             tableView.insertRows(at: [indexPath], with: .automatic)
+            tableView.reloadRows(at: [indexPath], with: .automatic)
+            tableView.endUpdates()
         case .delete:
             self.list.listItems.remove(at: indexPath.row)
+            tableView.beginUpdates()
             tableView.deleteRows(at: [indexPath], with: .automatic)
+            tableView.reloadSections(NSIndexSet(index:0) as IndexSet, with: .automatic)
+            tableView.endUpdates()
         default:
             break
         }
-        tableView.endUpdates()
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let cell = tableView.cellForRow(at: indexPath) as!ChecklistItemCell
+        let cell = tableView.cellForRow(at: indexPath) as! ChecklistItemCell
         let listItems = list.listItems
         let listItem = listItems[indexPath.row]
         listItem.toggleChecked()
