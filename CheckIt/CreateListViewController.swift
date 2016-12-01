@@ -63,7 +63,7 @@ class CreateListViewController: UITableViewController, UITextFieldDelegate {
             newListItems.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .automatic)
         default:
-            break;
+            break
         }
         tableView.endUpdates()
     }

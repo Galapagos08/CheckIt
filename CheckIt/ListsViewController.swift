@@ -112,7 +112,7 @@ class ListsViewController: UITableViewController {
         let navController = storyboard.instantiateViewController(withIdentifier: "Create List Nav") as! UINavigationController
         let createListVC = navController.topViewController as! CreateListViewController
         createListVC.listStore = listStore
-        self.present(navController, animated: true, completion: nil)
+        self.present(navController, animated: false, completion: nil)
     }
     
 }
