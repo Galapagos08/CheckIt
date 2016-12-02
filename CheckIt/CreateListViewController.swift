@@ -90,7 +90,7 @@ class CreateListViewController: UITableViewController, UITextFieldDelegate {
             return cell
         case 1:
             let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! MyCell
-            cell.textField.placeholder = newListItems[indexPath.row]
+            cell.textField.placeholder = "enter list item"
             cell.textField.delegate = self
             cell.textField.tag = indexPath.row
             return cell
