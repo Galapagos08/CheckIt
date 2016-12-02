@@ -61,6 +61,7 @@ class EditListViewController: UITableViewController, UITextFieldDelegate {
         case .delete:
             list.listItems.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .automatic)
+            self.navigationItem.rightBarButtonItem?.isEnabled = true
         default:
             break
         }
