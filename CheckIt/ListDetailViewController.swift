@@ -35,8 +35,7 @@ class ListDetailViewController: UITableViewController, UITextFieldDelegate {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! ChecklistItemCell
         listItemTextField = cell.itemInfoTextField
-        let listItems = list.listItems
-        let listItem = listItems[indexPath.row]
+        let listItem = list.listItems[indexPath.row]
         cell.itemInfoTextField.placeholder = "add list item"
         cell.itemInfoTextField.text = listItem.itemInfo
         cell.itemInfoTextField.isEnabled = false
@@ -89,6 +88,7 @@ class ListDetailViewController: UITableViewController, UITextFieldDelegate {
         let navController = storyboard.instantiateViewController(withIdentifier: "EditListNav") as! UINavigationController
         let editListVC = navController.topViewController as! EditListViewController
         editListVC.listStore = listStore
+        editListVC.list = list
         self.present(navController, animated: false, completion: nil)
     }
 
@@ -125,7 +125,6 @@ class ListDetailViewController: UITableViewController, UITextFieldDelegate {
         }
     }
 
-    
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         tableView.endEditing(true)
         switch editingStyle {
@@ -146,8 +145,6 @@ class ListDetailViewController: UITableViewController, UITextFieldDelegate {
             break
         }
     }
-    
-    
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         let row = textField.tag

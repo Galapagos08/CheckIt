@@ -12,10 +12,10 @@ class EditListViewController: UITableViewController, UITextFieldDelegate {
 
     var list: List!
     var listStore: ListStore!
+    var listNameTextField: UITextField?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -51,45 +51,7 @@ class EditListViewController: UITableViewController, UITextFieldDelegate {
         return .none
     }
    
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! MyCell
-        switch indexPath.section {
-        case 0:
-            cell.textField.text = list.listName
-            cell.textField.delegate = self
-        case 1 where isEditing && indexPath.row == list.listItems.count:
-            cell.textField.text = "add list item"
-            cell.textField.isEnabled = false
-        case 1:
-            cell.textField.placeholder = "new list item"
-        default:
-            fatalError("You have an unexpected section")
-        }
-        return cell
-    }
- 
-
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        switch indexPath.section {
-        case 0:
-            return true
-        case 1:
-            if indexPath.row == indexPath.last {
-                return false
-            } else {
-                return true
-            }
-        default:
-            fatalError("Unexpected section")
-        }
-    }
-
-    @IBAction func cancelButton(_ sender: AnyObject) {
-        self.dismiss(animated: true, completion: nil)
-    }
-
-    
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+   override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         tableView.beginUpdates()
         switch editingStyle {
         case .insert:
@@ -104,20 +66,65 @@ class EditListViewController: UITableViewController, UITextFieldDelegate {
         }
         tableView.endUpdates()
     }
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
+    
+    override func tableView(_ tableView: UITableView, shouldIndentWhileEditingRowAt indexPath: IndexPath) -> Bool {
+        if indexPath.section == 1 {
+            return true
+        }
+        return false
     }
-    */
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! MyCell
+        switch indexPath.section {
+        case 0:
+            listNameTextField = cell.textField
+            cell.textField.text = list.listName
+            cell.textField.delegate = self
+        case 1 where isEditing && indexPath.row == list.listItems.count:
+            cell.textField.text = "add list item"
+            cell.textField.isEnabled = false
+        case 1:
+            let listItem = list.listItems[indexPath.row]
+            cell.textField.text = listItem.itemInfo
+            cell.textField.placeholder = "new list item"
+            cell.textField.delegate  = self
+            cell.textField.tag = indexPath.row
+        default:
+            fatalError("You have an unexpected section")
+        }
+        return cell
+    }
+ 
+    @IBAction func cancelButton(_ sender: AnyObject) {
+        self.dismiss(animated: true, completion: nil)
+    }
 
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
+    @IBAction func doneButton(_ sender: AnyObject) {
+        listStore.saveChanges()
+        self.dismiss(animated: false, completion: nil)
+    }
+    
+ 
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        if textField == listNameTextField {
+            let text = (textField.text! as NSString).replacingCharacters(in: range, with: string)
+            self.list.listName = text
+            if text.isEmpty {
+                self.navigationItem.rightBarButtonItem?.isEnabled = false
+            } else {
+                self.navigationItem.rightBarButtonItem?.isEnabled = true
+            }
+        } else {
+            let row = textField.tag
+            list.listItems[row].itemInfo = (textField.text! as NSString).replacingCharacters(in: range, with: string)
+            self.navigationItem.rightBarButtonItem?.isEnabled = true
+        }
         return true
     }
-    */
+    
+    override func setEditing(_ editing: Bool, animated: Bool) {
+        super.setEditing(editing, animated: animated)
+    }
 
 }
