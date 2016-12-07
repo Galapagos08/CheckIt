@@ -13,6 +13,7 @@
 		F707F1311DD3C0500051A7CF /* ListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F707F1301DD3C0500051A7CF /* ListItem.swift */; };
 		F70DEC301DEF273500947325 /* ChecklistItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F70DEC2E1DEF273500947325 /* ChecklistItemCell.swift */; };
 		F70DEC311DEF273500947325 /* ChecklistItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F70DEC2F1DEF273500947325 /* ChecklistItemCell.xib */; };
+		F710D7DC1DF5ACA300D5C1CD /* Groceries.swift in Sources */ = {isa = PBXBuildFile; fileRef = F710D7DB1DF5ACA300D5C1CD /* Groceries.swift */; };
 		F753D2AE1DD120C100699604 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F753D2AD1DD120C100699604 /* AppDelegate.swift */; };
 		F753D2B01DD120C100699604 /* ListsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F753D2AF1DD120C100699604 /* ListsViewController.swift */; };
 		F753D2B31DD120C100699604 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F753D2B11DD120C100699604 /* Main.storyboard */; };
@@ -50,6 +51,7 @@
 		F707F1301DD3C0500051A7CF /* ListItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListItem.swift; sourceTree = "<group>"; };
 		F70DEC2E1DEF273500947325 /* ChecklistItemCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChecklistItemCell.swift; sourceTree = "<group>"; };
 		F70DEC2F1DEF273500947325 /* ChecklistItemCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChecklistItemCell.xib; sourceTree = "<group>"; };
+		F710D7DB1DF5ACA300D5C1CD /* Groceries.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Groceries.swift; sourceTree = "<group>"; };
 		F753D2AA1DD120C100699604 /* CheckIt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CheckIt.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F753D2AD1DD120C100699604 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F753D2AF1DD120C100699604 /* ListsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListsViewController.swift; sourceTree = "<group>"; };
@@ -117,6 +119,7 @@
 		F753D2AC1DD120C100699604 /* CheckIt */ = {
 			isa = PBXGroup;
 			children = (
+				F710D7DB1DF5ACA300D5C1CD /* Groceries.swift */,
 				F7E9957C1DF0804B0022EA89 /* EditListViewController.swift */,
 				F753D2AD1DD120C100699604 /* AppDelegate.swift */,
 				F7026AF81DDA22BC0055DA73 /* CreateListViewController.swift */,
@@ -294,6 +297,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F710D7DC1DF5ACA300D5C1CD /* Groceries.swift in Sources */,
 				F7E9957D1DF0804B0022EA89 /* EditListViewController.swift in Sources */,
 				F753D2B01DD120C100699604 /* ListsViewController.swift in Sources */,
 				F707F1311DD3C0500051A7CF /* ListItem.swift in Sources */,
