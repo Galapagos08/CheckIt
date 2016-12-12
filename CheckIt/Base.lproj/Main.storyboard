@@ -51,6 +51,13 @@
                             <outlet property="delegate" destination="GP9-rS-Tpz" id="D1G-Gt-3qe"/>
                         </connections>
                     </tableView>
+                    <toolbarItems>
+                        <barButtonItem title="Grocery" id="x1y-8v-6ud">
+                            <connections>
+                                <action selector="groceryBarButton:" destination="GP9-rS-Tpz" id="t8J-uC-W26"/>
+                            </connections>
+                        </barButtonItem>
+                    </toolbarItems>
                     <navigationItem key="navigationItem" title="My Lists" id="Jlg-Li-88P">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="lLS-To-GQt">
                             <connections>
@@ -103,7 +110,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="X4Z-V6-12F" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2289" y="12"/>
+            <point key="canvasLocation" x="2142" y="12"/>
         </scene>
         <!--Edit List View Controller-->
         <scene sceneID="oeu-gO-fde">
@@ -242,6 +249,55 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mNd-b0-2xy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2142" y="773"/>
+        </scene>
+        <!--Grocery List View Controller-->
+        <scene sceneID="3eu-UM-DOf">
+            <objects>
+                <tableViewController id="knJ-dD-LQt" customClass="GroceryListViewController" customModule="CheckIt" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="S0M-Cb-Ju0">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" id="j2X-3W-fff" customClass="ChecklistItemCell" customModule="CheckIt" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="j2X-3W-fff" id="vbg-zO-T95">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="knJ-dD-LQt" id="G3d-CC-Jko"/>
+                            <outlet property="delegate" destination="knJ-dD-LQt" id="bPt-gH-SfO"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="05k-sx-XHB">
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="oVB-Db-Z16"/>
+                    </navigationItem>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Wwt-Df-HIS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1278" y="1468"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="1ug-mc-92V">
+            <objects>
+                <navigationController storyboardIdentifier="GroceryNav" automaticallyAdjustsScrollViewInsets="NO" id="jRV-uj-O69" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="v1t-kr-cm5">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="knJ-dD-LQt" kind="relationship" relationship="rootViewController" id="VUQ-bm-d2J"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vdj-KE-oRu" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="446" y="1451"/>
         </scene>
     </scenes>
 </document>

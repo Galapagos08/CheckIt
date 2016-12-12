@@ -115,5 +115,11 @@ class ListsViewController: UITableViewController {
         self.present(navController, animated: false, completion: nil)
     }
     
+    @IBAction func groceryBarButton(_ sender: AnyObject) {
+        let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+        let navController = storyboard.instantiateViewController(withIdentifier: "GroceryNav") as! UINavigationController
+        self.present(navController, animated: false, completion: nil)
+    }
+    
 }
 
