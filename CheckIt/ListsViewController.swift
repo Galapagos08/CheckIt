@@ -10,7 +10,7 @@ import UIKit
 
 class ListsViewController: UITableViewController {
 
-    var listStore: ListStore = ListStore()
+    var listStore: ListStore!
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -118,6 +118,8 @@ class ListsViewController: UITableViewController {
     @IBAction func groceryBarButton(_ sender: AnyObject) {
         let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
         let navController = storyboard.instantiateViewController(withIdentifier: "GroceryNav") as! UINavigationController
+        let groceryListVC = navController.topViewController as! GroceryListViewController
+        groceryListVC.listStore = listStore
         self.present(navController, animated: false, completion: nil)
     }
     

@@ -12,7 +12,6 @@ class GroceryListViewController: UITableViewController, UITextFieldDelegate {
 
     var listStore: ListStore!
     var listTemplate = GroceryLists()
-    var newListName: String = "Groceries"
     var newListItems: [String] = []
     
     
@@ -23,7 +22,6 @@ class GroceryListViewController: UITableViewController, UITextFieldDelegate {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.tableView.register(UINib(nibName: "ChecklistItemCell", bundle: nil), forCellReuseIdentifier: "Cell")
-        self.navigationItem.rightBarButtonItem?.isEnabled = false
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -78,7 +76,7 @@ class GroceryListViewController: UITableViewController, UITextFieldDelegate {
         return cell
     }
   
-    override func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath) as! ChecklistItemCell
         if cell.checkedLabel.text == "" {
         let newListItem = cell.itemInfoTextField.text
@@ -92,13 +90,12 @@ class GroceryListViewController: UITableViewController, UITextFieldDelegate {
     }
         
     @IBAction func doneButton(_ sender: UIBarButtonItem) {
-        let listName = self.newListName
-        listStore.createList(listName: listName)
+        listStore.createList(listName: "Groceries")
         let list = listStore.allLists.last!
         let listItems = listStore.convertStringArray(someArray: newListItems)
         list.listItems = listItems
-        listStore.saveChanges()
         self.dismiss(animated: true, completion: nil)
+ //       }
     }
     
 }

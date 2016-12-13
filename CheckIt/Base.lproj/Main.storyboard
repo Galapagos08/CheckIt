@@ -274,7 +274,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="05k-sx-XHB">
-                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="oVB-Db-Z16"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="oVB-Db-Z16">
+                            <connections>
+                                <action selector="doneButton:" destination="knJ-dD-LQt" id="Fq6-CY-Qj1"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Wwt-Df-HIS" userLabel="First Responder" sceneMemberID="firstResponder"/>
