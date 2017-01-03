@@ -17,4 +17,3 @@ struct GroceryLists {
     
 }
 
-// let groceryItems = ["Dairy": dairyList, "Vegetables": vegList]

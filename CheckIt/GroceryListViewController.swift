@@ -95,7 +95,6 @@ class GroceryListViewController: UITableViewController, UITextFieldDelegate {
         let listItems = listStore.convertStringArray(someArray: newListItems)
         list.listItems = listItems
         self.dismiss(animated: true, completion: nil)
- //       }
     }
     
 }
