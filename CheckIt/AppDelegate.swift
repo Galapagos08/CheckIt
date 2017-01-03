@@ -21,17 +21,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UINavigationBar.appearance().barTintColor = UIColor.init(red: 0, green: 121/255, blue: 1, alpha: 1)
         UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName: UIColor.init(red: 1, green: 1, blue: 1, alpha: 1)]
         UINavigationBar.appearance().tintColor = UIColor.init(red: 1, green: 1, blue: 1, alpha: 1)
-
         return true
     }
 
-//    func applicationDidEnterBackground(_ application: UIApplication) {
-//        let success = listStore.saveChanges()
-//        if (success) {
-//             print("\nsaved \(listStore.allLists.count)\n")
-//        }
-//        
-//    }
-    
 }
 
